@@ -1,0 +1,21 @@
+{
+  "replace": true,
+  "type": "tetra:basic_module",
+  "slots": [ "ring/band" ],
+  "variants": [
+    {
+      "key": "ring/testicle",
+      "integrity": 1,
+      "glyph": {
+        "tint": "7a6758",
+        "textureX": 0,
+        "textureY": 16
+      },
+      "models": [
+        {
+          "location": "andvari:items/module/ring/band/testicle"
+        }
+      ]
+    }
+  ]
+}
