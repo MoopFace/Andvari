@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.rgb_ram.zandvari.mixin",
+  "package": "com.rgb_ram.andvari.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "ZAndvari.refmap.json",
+  "refmap": "Andvari.refmap.json",
   "mixins": [
   ],
   "client": [

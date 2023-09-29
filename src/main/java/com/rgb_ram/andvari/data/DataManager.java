@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package zcom.rgb_ram.zandvari.data;
+package com.rgb_ram.andvari.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

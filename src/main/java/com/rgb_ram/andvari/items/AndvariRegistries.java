@@ -1,6 +1,6 @@
-package zcom.rgb_ram.zandvari.items;
+package com.rgb_ram.andvari.items;
 
-import zcom.rgb_ram.zandvari.ZAndvariMod;
+import com.rgb_ram.andvari.AndvariMod;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -10,21 +10,21 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 
-public class ZAndvariRegistries {
+public class AndvariRegistries {
     public static final DeferredRegister<Item> items;
-    public ZAndvariRegistries(){}
+    public AndvariRegistries(){}
 
     public static void init(IEventBus bus) {
-        bus.register(ZAndvariRegistries.class);
+        bus.register(AndvariRegistries.class);
         items.register(bus);
    //     ModularFakebeltItem.instance = items.register("modular_fakebelt", ModularFakebeltItem::new);
   //      ModularRingItem.instance = items.register("modular_ring", ModularRingItem::new);
     }
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, ZAndvariMod.MODID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
 
     public static final RegistryObject<Item> TESTICLE =
-            ITEMS.register("testicle", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).build())));
+            ITEMS.register("testitem", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).build())));
 
     public static void registerItems(IEventBus eventBus) {
         ITEMS.register(eventBus);
@@ -33,7 +33,7 @@ public class ZAndvariRegistries {
 
 
     static {
-        items = DeferredRegister.create(ForgeRegistries.ITEMS, ZAndvariMod.MODID);
+        items = DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
     }
 
 

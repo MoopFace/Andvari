@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package zcom.rgb_ram.zandvari.items.modular.impl.fakebelt;
+package com.rgb_ram.andvari.items.modular.impl.fakebelt;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;

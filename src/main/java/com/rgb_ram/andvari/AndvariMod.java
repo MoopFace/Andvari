@@ -1,7 +1,7 @@
-package zcom.rgb_ram.zandvari;
+package com.rgb_ram.andvari;
 
 import com.mojang.logging.LogUtils;
-import zcom.rgb_ram.zandvari.items.ZAndvariRegistries;
+import com.rgb_ram.andvari.items.AndvariRegistries;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,11 +19,11 @@ import org.slf4j.Logger;
 import se.mickelus.tetra.data.DataManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ZAndvariMod.MODID)
-public class ZAndvariMod {
+@Mod(AndvariMod.MODID)
+public class AndvariMod {
 
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "zandvari";
+    public static final String MODID = "andvari";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "andvari" namespace
@@ -36,14 +36,14 @@ public class ZAndvariMod {
     // Creates a new BlockItem with the id "andvari:example_block", combining the namespace and path
     //public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
 
-    public ZAndvariMod() {
+    public AndvariMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 //        MinecraftForge.EVENT_BUS.register(new DataManager());
         LOGGER.info("DataManager instance: " + DataManager.instance);
         //modEventBus.register(this);
-        ZAndvariRegistries.registerItems(modEventBus);
-        ZAndvariRegistries.init(modEventBus);
+        AndvariRegistries.registerItems(modEventBus);
+        AndvariRegistries.init(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
