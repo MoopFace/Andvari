@@ -16,7 +16,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 //import com.rgb_ram.andvari.data.DataManager;
+import se.mickelus.tetra.TetraRegistries;
 import se.mickelus.tetra.data.DataManager;
+import se.mickelus.tetra.module.ModuleRegistry;
+import net.minecraft.resources.ResourceLocation;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(AndvariMod.MODID)
@@ -38,12 +41,13 @@ public class AndvariMod {
 
     public AndvariMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        AndvariRegistries.init(modEventBus);
+        AndvariRegistries.registerItems(modEventBus);
+
+        LOGGER.info("DataManager instance: " + DataManager.instance);
 
 //        MinecraftForge.EVENT_BUS.register(new DataManager());
-        LOGGER.info("DataManager instance: " + DataManager.instance);
         //modEventBus.register(this);
-        AndvariRegistries.registerItems(modEventBus);
-        AndvariRegistries.init(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -52,8 +56,8 @@ public class AndvariMod {
         // Register the Deferred Register to the mod event bus so items get registered
         // ITEMS.register(modEventBus);
 
-      //  ModuleRegistry moduleRegistry = new ModuleRegistry();
-        // moduleRegistry.registerModuleType(new ResourceLocation(AndvariMod.MODID, "fakebelt_module"), FakebeltModule::new);
+        ModuleRegistry moduleRegistry = new ModuleRegistry();
+       // moduleRegistry.registerModuleType(new ResourceLocation(AndvariMod.MODID, "fakebelt_module"), FakebeltModule::new);
 
 
 

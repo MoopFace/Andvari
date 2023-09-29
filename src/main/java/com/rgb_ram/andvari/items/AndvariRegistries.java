@@ -8,6 +8,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
+import se.mickelus.tetra.module.ModuleRegistry;
+import com.rgb_ram.andvari.items.modular.impl.fakebelt.ModularFakebeltItem;
+import com.rgb_ram.andvari.items.modular.impl.fakebelt.FakebeltModule;
 
 
 public class AndvariRegistries {
@@ -17,8 +21,8 @@ public class AndvariRegistries {
     public static void init(IEventBus bus) {
         bus.register(AndvariRegistries.class);
         items.register(bus);
-   //     ModularFakebeltItem.instance = items.register("modular_fakebelt", ModularFakebeltItem::new);
-  //      ModularRingItem.instance = items.register("modular_ring", ModularRingItem::new);
+        ModularFakebeltItem.instance = items.register("modular_fakebelt", ModularFakebeltItem::new);
+      //  ModularRingItem.instance = items.register("modular_ring", ModularRingItem::new);
     }
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
@@ -30,8 +34,6 @@ public class AndvariRegistries {
         ITEMS.register(eventBus);
     }
     //public static final RegistryObject<Item> RING = ITEMS.register("modular_ring", ModularRingItem::new);
-
-
     static {
         items = DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
     }
