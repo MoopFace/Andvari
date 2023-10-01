@@ -30,10 +30,11 @@ public class AndvariRegistries {
     public static final RegistryObject<Item> TESTICLE =
             ITEMS.register("testitem", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).build())));
 
-    public static void registerItems(IEventBus eventBus) {
-        ITEMS.register(eventBus);
-    }
+//    public static void registerItems(IEventBus eventBus) {
+//        ITEMS.register(eventBus);
+//    }
     //public static final RegistryObject<Item> RING = ITEMS.register("modular_ring", ModularRingItem::new);
+
     static {
         items = DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
     }
