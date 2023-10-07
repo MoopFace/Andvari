@@ -16,11 +16,14 @@ import com.rgb_ram.andvari.items.modular.impl.fakebelt.FakebeltModule;
 
 
 public class AndvariRegistries {
-    public static final DeferredRegister<Item> items;
+
+    public static final DeferredRegister<Item> items =
+            DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
+    public static final RegistryObject<Item> TESTITEM =
+            items.register("testitem", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).build())));
 
    ;
     public AndvariRegistries(){}
-
     public static void init(IEventBus bus) {
         bus.register(AndvariRegistries.class);
         items.register(bus);
@@ -38,20 +41,13 @@ public class AndvariRegistries {
     }
 //    public static final DeferredRegister<Item> items =
 //            DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
-public static final DeferredRegister<Item> ITEMS =
-        DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
 
-    public static final RegistryObject<Item> TESTICLE =
-            ITEMS.register("testitem", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).build())));
 
-    public static void registerItems(IEventBus eventBus) {
-        ITEMS.register(eventBus);
-        items.register(eventBus);
-    }
+//    public static void registerItems(IEventBus eventBus) {
+//        items.register(eventBus);
+//    }
     //public static final RegistryObject<Item> RING = ITEMS.register("modular_ring", ModularRingItem::new);
-    static {
-        items = DeferredRegister.create(ForgeRegistries.ITEMS, AndvariMod.MODID);
-    }
+
 
 
 

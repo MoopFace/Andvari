@@ -30,10 +30,11 @@ public class AndvariMod {
     public static final String MODID = "andvari";
     private static final Logger LOGGER = LogUtils.getLogger();
     private final IEventBus modEventBus;
+    private static boolean haveIRunHack = true;
 
     public AndvariMod() {
         this.modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        AndvariRegistries.registerItems(modEventBus);
+        //AndvariRegistries.registerItems(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::RegisterModules);
@@ -57,10 +58,13 @@ public class AndvariMod {
 
 
     @SubscribeEvent
-    public void RegisterModules(InterModEnqueueEvent event) {
-        LOGGER.info("DataManager instance: " + DataManager.instance);
-        ModuleRegistry moduleRegistry = ModuleRegistry.instance;
-        AndvariRegistries.init(modEventBus);
+    public void RegisterModules(RegisterEvent event) {
+        if (haveIRunHack) {
+            LOGGER.info("DataManager instance: " + DataManager.instance);
+            ModuleRegistry moduleRegistry = ModuleRegistry.instance;
+            AndvariRegistries.init(modEventBus);
+            haveIRunHack = false;
+        }
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
