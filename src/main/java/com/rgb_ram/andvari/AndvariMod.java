@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
@@ -32,11 +33,12 @@ public class AndvariMod {
 
     public AndvariMod() {
         this.modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        AndvariRegistries.registerItems(modEventBus);
 
         //MinecraftForge.EVENT_BUS.register(new DataManager());
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::RegisterModules);
 
        // moduleRegistry.registerModuleType(new ResourceLocation(AndvariMod.MODID, "fakebelt_module"), FakebeltModule::new);
         MinecraftForge.EVENT_BUS.register(this);
@@ -56,25 +58,13 @@ public class AndvariMod {
 
 
 
-    public void register(RegisterEvent event) {
-        ModuleRegistry moduleRegistry = new ModuleRegistry();
 
-        event.register(ForgeRegistries.Keys.BLOCKS,
-                helper -> {
-                    helper.register(new ResourceLocation(MODID, "example_block_1"), new Block(...));
-                    helper.register(new ResourceLocation(MODID, "example_block_2"), new Block(...));
-                    helper.register(new ResourceLocation(MODID, "example_block_3"), new Block(...));
-                    // ...
-                }
-        );
+    @SubscribeEvent
+    public void RegisterModules(InterModEnqueueEvent event) {
+        LOGGER.info("DataManager instance: " + DataManager.instance);
+        ModuleRegistry moduleRegistry = ModuleRegistry.instance;
+        AndvariRegistries.init(modEventBus);
     }
-//    @SubscribeEvent
-//    public void registerModules(RegisterEvent event) {
-//        LOGGER.info("DataManager instance: " + DataManager.instance);
-//        ModuleRegistry moduleRegistry = new ModuleRegistry();
-//        AndvariRegistries.init(event);
-//        AndvariRegistries.registerItems(modEventBus);
-//    }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
