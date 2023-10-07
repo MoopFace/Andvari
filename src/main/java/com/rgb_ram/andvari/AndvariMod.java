@@ -35,12 +35,9 @@ public class AndvariMod {
         this.modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         AndvariRegistries.registerItems(modEventBus);
 
-        //MinecraftForge.EVENT_BUS.register(new DataManager());
-
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::RegisterModules);
 
-       // moduleRegistry.registerModuleType(new ResourceLocation(AndvariMod.MODID, "fakebelt_module"), FakebeltModule::new);
         MinecraftForge.EVENT_BUS.register(this);
     }
 

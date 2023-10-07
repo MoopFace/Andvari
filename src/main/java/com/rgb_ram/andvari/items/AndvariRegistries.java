@@ -46,6 +46,7 @@ public static final DeferredRegister<Item> ITEMS =
 
     public static void registerItems(IEventBus eventBus) {
         ITEMS.register(eventBus);
+        items.register(eventBus);
     }
     //public static final RegistryObject<Item> RING = ITEMS.register("modular_ring", ModularRingItem::new);
     static {
